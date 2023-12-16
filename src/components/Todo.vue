@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <h1>Todo List</h1>
+    <h1>Todo List 📝</h1>
     <div ref="complatedRef" class="complatedDiv">
       <p style="color: white">
         Total Task: {{ data.length }} - Complated Task: {{ getComplated }}
