@@ -3,7 +3,7 @@
     <h1>Todo List</h1>
     <div ref="complatedRef" class="complatedDiv">
       <p style="color: white">
-        Total Task--{{ data.length }} // Complated Task --{{ getComplated }}
+        Total Task: {{ data.length }} - Complated Task: {{ getComplated }}
       </p>
     </div>
     <div class="inputContainer">
