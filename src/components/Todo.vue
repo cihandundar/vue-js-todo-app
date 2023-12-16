@@ -117,11 +117,12 @@ export default {
 }
 
 .todoInput {
-  border-radius: 10px;
   width: 70%;
   padding: 10px;
   border: none;
   outline: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 ul {
@@ -142,7 +143,8 @@ ul li {
 .addBtn {
   border: none;
   padding: 10px;
-  border-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   background-color: green;
   color: #fff;
   cursor: pointer;
