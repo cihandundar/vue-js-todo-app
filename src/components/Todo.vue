@@ -38,11 +38,13 @@ export default {
       data: [],
     };
   },
+
   computed: {
     getComplated() {
       return this.data.filter((item) => item.complated).length;
     },
   },
+
   watch: {
     getComplated(newVal) {
       if (newVal / this.data.length >= 0.5) {
@@ -52,7 +54,23 @@ export default {
       }
     },
   },
+
+  mounted() {
+    this.getTodosFromLocalStorage();
+  },
+
   methods: {
+    getTodosFromLocalStorage() {
+      const savedTodos = JSON.parse(localStorage.getItem("todos"));
+      if (savedTodos) {
+        this.data = savedTodos;
+      }
+    },
+
+    saveTodosToLocalStorage() {
+      localStorage.setItem("todos", JSON.stringify(this.data));
+    },
+
     addTodo() {
       if (this.model !== "") {
         this.data.push({
@@ -60,20 +78,26 @@ export default {
           text: this.model,
           complated: false,
         });
+        this.saveTodosToLocalStorage();
       }
       this.model = "";
       this.$refs.myInput.focus();
     },
+
     deleteTodo(index) {
       this.data.splice(index, 1);
+      this.saveTodosToLocalStorage();
     },
+
     doneTodo(item) {
       const idx = this.data.findIndex((x) => x.id === item.id);
       this.data[idx].complated = !item.complated;
+      this.saveTodosToLocalStorage();
     },
   },
 };
 </script>
+
 <style>
 .strike {
   text-decoration: line-through;
